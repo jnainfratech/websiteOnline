@@ -1,4 +1,4 @@
-.profileCont{
+.transactionCont{
     background-image: url("../Images/Plans.png");
        
     width: 100%;
@@ -16,7 +16,7 @@
     left: 150px;
 
 }
-.profilehead{
+.tranhead{
     font-size: 30px;
     font-weight: 800;
     line-height: 50px;
@@ -26,7 +26,7 @@
     top:250px;
     position: absolute;
 }
-.profilehead{
+.transhead{
     font-size: 40px;
     font-weight: 900;
     line-height: 60px;
@@ -34,41 +34,11 @@
     text-align: left;
 
 }
-.profilebread{
+.tranbread{
     font-size: 14px;
     font-weight: 700;
     line-height: 21px;
     letter-spacing: 0.5833333134651184px;
     text-align: left;
 
-}
-.profilelabel{
-    /* font-family: Montserrat; */
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 0.5833333134651184px;
-    text-align: left;
-    
-}
-.profileinput{
-    width: 781px;
-    height: 30px;
-    top: 24px;
-}
-.profilebtn{
-    width: 165px;
-    height: 40px;
-    border-radius: 4px;
-    background-color: #0764E3;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-.profileform{
-    display: flex;
-    
-}
-.profilebtndiv{
-    margin-top: 30px;
 }

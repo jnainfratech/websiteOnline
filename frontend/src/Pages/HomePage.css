@@ -37,13 +37,13 @@
     color: #1A1A1A;
 }
 .HeroBtn{
-
-width: 100px;
-height: 40px;
-color: white;
-background: #0764E3;
-border-radius: 8px;
-border: none;
+    width: 100px;
+    height: 40px;
+    color: white;
+    background: #0764E3;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
 .HeroAboutus{
     padding: 30px;

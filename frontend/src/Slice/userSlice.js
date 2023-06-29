@@ -9,10 +9,25 @@ export const fetchUserData = createAsyncThunk(
     async (data) => {   
     console.log("Dataee =====>",data)
       const response = await axiosInstance.post('/api/register',{name:data.name,hashed_password:data.password,email:data.email})
+
       return response;
+      
     }
   );
 
+  export const loginUser =  createAsyncThunk(
+    'user/login',
+    async (data) =>{
+      const response =  await axiosInstance.post("/api/register",{name:data.name,hashed_password:data.password})
+      return response
+    }
+  )
+export const logoutUser =  createAsyncThunk(
+  'user/logout',
+  async()=>{
+      localStorage.removeItem()
+  }
+  )
   const userSlice = createSlice({
     name: 'user',
     initialState: {
@@ -21,7 +36,9 @@ export const fetchUserData = createAsyncThunk(
       error: null,
       status:null
     },
-    reducers: {},
+    reducers: {
+   
+    },
     extraReducers: (builder) => {
       builder
         .addCase(fetchUserData.pending, (state) => {
@@ -33,17 +50,45 @@ export const fetchUserData = createAsyncThunk(
         console.log("my payload",action.payload)
           state.loading = false;
           state.userData = action.payload.data;
+          localStorage.setItem('accessToken', action.payload.data.access_token);
           state.status = action.payload.status;
+          
         })
         .addCase(fetchUserData.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;
-        });
+        })
+        .addCase(loginUser.pending,(state)=>{
+          state.loading = true;
+          state.error = null;
+        })
+        .addCase(loginUser.fulfilled,(state,action)=>{
+          state.loading = false;
+          state.userData = action.payload.data;
+          localStorage.setItem('accessToken',action.payload.data.access_token);
+          state.status = action.payload.status;
+         
+        })
+        .addCase(loginUser.rejected,(state,action)=>{
+          state.loading = false;
+          state.error = action.error.message;
+        }) 
+        .addCase(logoutUser.pending,(state)=>{
+          state.loading =  true
+          state.error = null
+        })
+        .addCase(logoutUser.fulfilled,(state)=>{
+          state.loading= false;
+          state.userData = null;
+          state.status = 200;
+
+        })
     },
   });
   
   // Export the action creator
   export const { actions: userActions } = userSlice;
+
   
   // Export the reducer
   export default userSlice.reducer;

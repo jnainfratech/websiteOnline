@@ -34,7 +34,7 @@
 }
 .logintypo1{
 font-size: 14px;
-font-weight: 500;
+font-weight: 600;
 line-height: 16px;
 letter-spacing: 0.5833333134651184px;
 text-align: left;
@@ -50,7 +50,7 @@ letter-spacing: 1.333333969116211px;
 .loginusername{
     
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 16px;
     letter-spacing: 0.5833333134651184px;
     text-align: left;
@@ -58,8 +58,9 @@ letter-spacing: 1.333333969116211px;
 }
 .logininput{
     width: 488px;
-    height: 24px;
+    height: 32px;
     border-radius: 8px;
+    border: none;
 
 }
 .loginbtn{
@@ -73,10 +74,11 @@ letter-spacing: 1.333333969116211px;
 }
 .loginfp{
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 26px;
     letter-spacing: 0.25px;
     text-align: left;
     color:#0764E3;
+    cursor: pointer;
 }
 

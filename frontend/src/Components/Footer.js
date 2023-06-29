@@ -14,23 +14,23 @@ function Footer() {
       <div className='footercont'>
       
       <div className='footContact'>
-        <div>
-          <EmailIcon></EmailIcon> <p>exmaple.@gmail.com</p>
+        <div className='footdetail'>
+          <EmailIcon></EmailIcon> <p className='footertxt'>exmaple.@gmail.com</p>
         </div>
-        <div>
-          <PhoneIcon></PhoneIcon> <p>001-321421521</p>
+        <div className='footdetail'>
+          <PhoneIcon></PhoneIcon> <p className='footertxt'>001-321421521</p>
         </div>
         
         
       </div>
       <div>
-        <p>© 2020 All Rights Reserved</p>
+        <p>© 2023 All Rights Reserved</p>
       </div>
-      <div>
+      {/* <div>
           <TwitterIcon />
           <FacebookIcon />
           <LinkedInIcon />
-      </div>
+      </div> */}
      </div>   
     </Container>
   </div>

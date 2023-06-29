@@ -4,8 +4,10 @@ import RegisterImage from '../Images/RegisterPage.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserData } from '../Slice/userSlice';
 import { useNavigate } from "react-router-dom";
+
 function RegisterPage() {
   const dispatch = useDispatch();
+
   const userData = useSelector((state) => state.user.userData);
   const loading = useSelector((state) => state.user.loading);
   const error = useSelector((state) => state.user.error);
@@ -17,6 +19,8 @@ function RegisterPage() {
   const [email,setEmail] = useState("")
   const [conformPassword,setConformPassowrd] = useState()
 
+  const [token,setToken] = useState("")
+
   const handleRegister = ()=>{
 
     const  data =  {
@@ -27,11 +31,21 @@ function RegisterPage() {
     dispatch(fetchUserData(data))
 
   }
-  useEffect(()=>{
-    if(status=="200"){
-      navigate("/")
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      navigate('/'); // Redirect to the home route
     }
-  },[])
+  }, [navigate]);
+  // useEffect(()=>{
+  //   const accessToken = localStorage.getItem('accessToken');
+  //   if(status==200){
+  //     navigate("/")
+  //   }
+  // },[])
+const  handleLogin = ()=>{
+  navigate('/login')
+}
 
 
   return (
@@ -70,7 +84,8 @@ function RegisterPage() {
                 <button className='regbtn'onClick={handleRegister} >REGISTER</button>
               </div>
               <div>
-                <p className='regfp'>ALREADY HAVE ACCOUNT ?</p>
+                <p className='regfp' onClick={handleLogin}>ALREADY HAVE ACCOUNT ?</p>
+                
               </div>
         </div>
       </div>

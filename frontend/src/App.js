@@ -4,6 +4,9 @@ import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/RegisterPage';
 import PlanPage from './Pages/PlanPage';
+import TransactionPage from './Pages/TransactionPage';
+import ProfilePage from './Pages/ProfilePage';
+import Structure from './Pages/Structure';
 
 
 
@@ -21,6 +24,12 @@ function App() {
             <Route path="/register" Component={RegisterPage}/>
 
             <Route path ='/plans' Component={PlanPage} />
+
+            <Route path = '/Mytransaction' Component={TransactionPage} />
+
+            <Route path = '/Myprofile' Component={ProfilePage} />
+
+            <Route path = '/Structure' Component={Structure} />
 
         </Routes>
       </div>
