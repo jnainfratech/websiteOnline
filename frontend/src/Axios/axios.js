@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const url  = "http://127.0.0.1:8000/"
+const url  = "http://143.110.186.152:8080/"
 // Create a new Axios instance
 const axiosInstance = axios.create({
   baseURL: url, // Set the base URL for all requests
