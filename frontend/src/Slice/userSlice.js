@@ -17,15 +17,16 @@ export const fetchUserData = createAsyncThunk(
 
   export const loginUser =  createAsyncThunk(
     'user/login',
-    async (data) =>{
-      const response =  await axiosInstance.post("/api/register",{name:data.name,hashed_password:data.password})
+    async (data,{dispatch}) =>{
+      console.log("data",data)
+      const response =  await axiosInstance.post("/api/login",{name:data.name,password:data.password})
       return response
     }
   )
 export const logoutUser =  createAsyncThunk(
   'user/logout',
   async()=>{
-      localStorage.removeItem()
+      localStorage.removeItem('accessToken')
   }
   )
   const userSlice = createSlice({
@@ -80,7 +81,7 @@ export const logoutUser =  createAsyncThunk(
         .addCase(logoutUser.fulfilled,(state)=>{
           state.loading= false;
           state.userData = null;
-          state.status = 200;
+          state.status = null;
 
         })
     },

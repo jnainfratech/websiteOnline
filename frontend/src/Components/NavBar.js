@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container';
 import './NavBar.css';
 import Logo from '../Images/Logo12.png'
@@ -32,7 +32,7 @@ function NavBar() {
     const anchorRef = React.useRef(null);
     const dispatch = useDispatch()
     const handleLogout = ()=>{
-        // localStorage.removeItem('accessToken');
+        localStorage.removeItem('accessToken');
         // Dispatch the logout action
         dispatch(logoutUser());
     }
@@ -66,10 +66,18 @@ function NavBar() {
   
       prevOpen.current = open;
     }, [open]);
-  
+const handlePlans = ()=>{
+    navigate("/plans")
+}
+const handleHome = ()=>{
+    navigate("/")
+}
 
 const navigate = useNavigate()
-const [token,setToken] = (localStorage.getItem('accessToken'))
+const [token,setToken] = useState("")
+useEffect(()=>{
+    setToken(localStorage.getItem("accessToken"))
+},[])
 const hanndleClick = ()=> {
     navigate("/login")
 }
@@ -85,7 +93,7 @@ const handleLogoClick = ()=>{
                         <img src={Logo} alt="Error in logo" className='navLogo'></img>
                     </div>
                     <div className='navItem'>
-                        <div>
+                        <div onClick={handleHome}>
                             <p className='text'>Home</p>
                         </div>
                         <div>
@@ -94,11 +102,11 @@ const handleLogoClick = ()=>{
                         <div>
                             <p>Use US</p>
                         </div>
-                        <div>
+                        <div onClick={handlePlans}>
                             <p>Our Plans</p>
                         </div>
                         <div className='navbtndiv'>
-                            { token  ?  
+                            { userData  ?  
                                 <div> 
                                    <Stack direction="row" spacing={2}>
                                     
@@ -111,7 +119,7 @@ const handleLogoClick = ()=>{
                                             aria-haspopup="true"
                                             onClick={handleToggle}
                                             >
-                                            <AccountBoxIcon style={{ color: 'black', fontSize: 40 }}  />
+                                            <AccountBoxIcon style={{ color: 'black', fontSize: 30 }}  />
                                             </Button>
                                             <Popper
                                             open={open}
@@ -140,7 +148,7 @@ const handleLogoClick = ()=>{
                                                     >   
                                                         <div className='dropdownitem'>
                                                             <div>
-                                                                Hello,User!
+                                                                Hello,{userData.username}!
                                                             </div>
                                                         </div>
                                                         <Box borderBottom={1} borderColor="black" style={{color:"black"}}/>
@@ -172,8 +180,7 @@ const handleLogoClick = ()=>{
                                                             </div>
                                                             
                                                         </div>
-                                                        {userData && (
-       
+                                                       
       
                                                     <div className='dropdownitem'onClick={handleLogout} >
                                                             <div>
@@ -184,7 +191,7 @@ const handleLogoClick = ()=>{
                                                             </div>
                                                             
                                                         </div>
-                                                        )}
+                                                    
                                                     </MenuList>
                                                     </ClickAwayListener>
                                                 </Paper>

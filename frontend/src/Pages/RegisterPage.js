@@ -33,10 +33,10 @@ function RegisterPage() {
   }
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
+    if (accessToken && status === 200) {
       navigate('/'); // Redirect to the home route
     }
-  }, [navigate]);
+  }, [navigate, status]);
   // useEffect(()=>{
   //   const accessToken = localStorage.getItem('accessToken');
   //   if(status==200){
